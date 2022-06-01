@@ -1,0 +1,146 @@
+body {
+  background-image: url("../public/tile_background.png");
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card {
+  margin: 0 auto;
+  -webkit-box-shadow: 11px 9px 26px -10px #000000;
+  -moz-box-shadow: 11px 9px 26px -10px #000000;
+  -o-box-shadow: 11px 9px 26px -10px #000000;
+  box-shadow: 11px 9px 26px -10px #000000;
+  /* Added */
+  float: none;
+  /* Added */
+  margin-bottom: 10px;
+  /* Added */
+  border-radius: 7px;
+  background: rgba(109, 109, 109, 0.49);
+  height: 400px;
+}
+
+.form-aggiunta {
+  background: rgba(109, 109, 109, 0.49);
+  -webkit-box-shadow: 4px 5px 33px 0px #000000;
+  -moz-box-shadow: 4px 5px 33px 0px #000000;
+  -o-box-shadow: 4px 5px 33px 0px #000000;
+  box-shadow: 4px 5px 33px 0px #000000;
+  border-radius: 7px;
+}
+
+.btn-form {
+  background-color: white;
+  width: 100%
+}
+
+.btn-card {
+  background-color: rgba(119, 116, 215, 0);
+}
+
+.card-body>.btn-primary:hover {
+  background-color: rgb(8, 0, 255, 0.6);
+  border-color: transparent
+}
+
+/* .btn-primary:focus {
+  background-color: rgba(0, 0, 0, 0);
+} */
+
+.btn-delete {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.btn-delete:hover{
+  background-color: rgba(255, 0, 0, 0.555);
+}
+
+.modal-content {
+  background-image: url("../public/tile_background.png");
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.card >.hr {
+  height: 2px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  width: 70%;
+  margin: 10px auto 10px auto;
+}
+
+.card-body {
+  padding: 2px;
+}
+
+.invio {
+  background-color: rgb(88, 85, 187);
+}
+
+.col-index {
+  z-index: 10;
+}
+
+.nav-index {
+  z-index: 100;
+  position: sticky;
+  top: 0;
+}
+
+.card-body-text{
+  height: 34px;
+}
+
+.card-footer-text{
+  height: 120px;
+}
+
+button > svg{
+    color: white;
+}
+
+.text-nav{
+  color: #3b8ee5;
+}
+
+.text-nav:hover{
+  color: white
+}
