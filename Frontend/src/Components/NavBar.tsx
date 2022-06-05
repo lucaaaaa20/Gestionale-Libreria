@@ -2,9 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { faBook, faRectangleList } from '@fortawesome/free-solid-svg-icons'
+import { faBook, faRectangleList, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { logout } from '../actions/logout';
+import { useDispatch } from "react-redux";
+
 
 export const NavBar = () => {
+    const dispatch = useDispatch();
     return (
         <>
             <Nav defaultActiveKey="/home" as="ul" className="bg-dark py-2 mb-5 nav-index">
@@ -18,6 +22,11 @@ export const NavBar = () => {
                     <Link to="/lista-card" className="nav-link text-nav">
                         <FontAwesomeIcon icon={faBook} /> Libreria
                     </Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                    <Nav.Link > <button className="btn btn-danger btn-block" onClick={() => dispatch(logout())}>Logout</button>
+                        <FontAwesomeIcon icon={faRightFromBracket} /> 
+                    </Nav.Link>
                 </Nav.Item>
             </Nav>
         </>

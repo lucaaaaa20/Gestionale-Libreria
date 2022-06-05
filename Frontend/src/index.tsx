@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { rootReducer } from './reducers/rootReducer';
+
+const immagazzinamento = createStore(rootReducer);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,9 +16,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     {/* L'AGGIUNTA DI BrowserRouter PERMETTE DI CREARE IL REINDIRIZZAMENTO */}
+    
+    <Provider store={immagazzinamento}>
     <BrowserRouter>
       <App />
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
+    
   </React.StrictMode>
 );
 
