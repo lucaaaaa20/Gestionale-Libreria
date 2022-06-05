@@ -10,7 +10,7 @@ import { faTrashCan, faPencil, faFloppyDisk, faRotateLeft } from '@fortawesome/f
 
 export const ListaLibri = () => {
     const [libri, setLibri] = useState<Libro[]>()
-    const [libro, setLibro] = useState<any>()
+    const [libro, setLibro] = useState<Libro>()
 
     const[aggiorna, setAggiorna] = useState<boolean>(false)
 
@@ -22,7 +22,7 @@ export const ListaLibri = () => {
         })
     }, [aggiorna]) //ALLA MODIFICA DI AGGIORNA VIENE ESEGUITO L'useEffect
 
-    const elimina = (id: any): void => {
+    const elimina = (id: number): void => {
         axios.delete(`http://localhost:4000/libreria/elimina/${id}`).then((Risultato) => {
             console.log("eliminato")
             setAggiorna(true) //MODIFICA VIENE SETTATO A TRUE
@@ -52,15 +52,15 @@ export const ListaLibri = () => {
     const handleShow = () =>
         setShow(true);
 
-
     const apriModale = (isbn: any) => {
         axios.get<any>(`http://localhost:4000/libreria/libro/${isbn}`).then((risultato) => {
+            console.log(risultato.data)
             setLibro(risultato.data[0])     //AL CLICK DELL'APERTURA DELLA MODALE VADO A SETTARE LA VARIABILE LIBRO ALLA CARD APPENA CLICCATO
         })                                  //QUESTO PERMETTERA' ANCHE DI MOSTRARE NEI PLACEHOLDER DELL'INPUT DELLA MODALE IL VALORE DEL LIBRO APPENA CLICCATO
         setShow(true);
     }
 
-    const prova = (evt: any) => {
+    const preventDefault = (evt: any) => {
         evt.preventDefault()
     }
 
@@ -69,8 +69,8 @@ export const ListaLibri = () => {
             {/* VADO A CREARE LE CARD IN BASE A QUANTI ELEMENTI CI SONO NELLA VARIABILE LIBRI (CHE E' STATA SETTATA ALL'APERTURA)*/}
             {libri?.map((elemento: any, indice: any) =>
                 <><Col className=" col-lg-4 col-md-6 col-sm-12 col-12 mb-3 col-index text-white">
-                    <form onSubmit={prova}> 
-                        <Card className="border border-dark p-2" key={indice}>
+                    <form onSubmit={preventDefault}> 
+                        <Card className="border border-dark p-2 hover" key={indice}>
                             <Card.Title className="mt-3"><strong>Titolo</strong></Card.Title>
                             <div className="card-body-text"> {elemento.titolo ? elemento.titolo : "Non definito"}</div>
                             {/* <hr className="hr"></hr> */}
@@ -79,7 +79,8 @@ export const ListaLibri = () => {
                             {/* <hr className="hr"></hr> */}
                             <Card.Title ><strong>Descrizione:</strong></Card.Title>
                             <div className="mb-4 card-footer-text">{elemento.descrizione ? elemento.descrizione : "Non definito"}</div>
-                            <Card.Body> <button className="btn me-1 btn-card btn-delete" onClick={() => elimina(elemento.isbn)}><FontAwesomeIcon icon={faTrashCan} /></button>
+                            <Card.Body> 
+                                <button className="btn me-1 btn-card btn-delete" onClick={() => elimina(elemento.isbn)}><FontAwesomeIcon icon={faTrashCan} /></button>
                                 {/* ALLA CREAZIONE DELLE CARD PASSO L'ID DEL LIBRO APPENA LETTO ALLA FUNZIONE apriModale(isbn) */}
                                 <Button type="submit" variant="primary" onClick={() => apriModale(elemento.isbn)} className="btn-card"><FontAwesomeIcon icon={faPencil} /></Button>
                             </Card.Body>
@@ -99,15 +100,15 @@ export const ListaLibri = () => {
                             <Form.Group>
                                 <Form.Label className="mt-2">Autore</Form.Label>
                                 {/* IMPOSTO IL PLACEHOLDER DELLA MODALE IN BASE ALLA VARIABILE LIBRO (CHE E' STATA SETTATA A RIGA 56) */}
-                                <Form.Control type="text" id="autore" placeholder={libro?.autore}></Form.Control>
+                                <Form.Control type="text" id="autore" placeholder={libro?.autore ? libro.autore : "Non definito"}></Form.Control>
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label className="mt-2">Titolo</Form.Label>
-                                <Form.Control type="text" id="titolo" placeholder={libro?.titolo}></Form.Control>
+                                <Form.Control type="text" id="titolo" placeholder={libro?.titolo ? libro.titolo : "Non definito"}></Form.Control>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label className="mt-2">Descrizione</Form.Label>
-                                <Form.Control type="text" id="descrizione" placeholder={libro?.descrizione}></Form.Control>
+                                <Form.Control type="text" id="descrizione" placeholder={libro?.descrizione ? libro.descrizione : "Non definito"}></Form.Control>
                             </Form.Group>
                             <Button className="me-2 mt-3 w-100" variant="secondary" onClick={handleClose}>
                                 <FontAwesomeIcon icon={faRotateLeft} />

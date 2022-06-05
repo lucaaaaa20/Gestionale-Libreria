@@ -21,12 +21,12 @@ export const FormLibro = () => {
         }
         //VADO A INSERIRE I VALORI INSERITI NEL FORM NEL DB
         axios.post<Libro>("http://localhost:4000/libreria/addLibro", libro).then((risultato) => { console.log(risultato) })
-        setAggiorna(true)
+        // setAggiorna(true)
         evt.target.inputAutore.value = ""
         evt.target.inputTitolo.value = ""
         evt.target.inputDescrizione.value = ""
     }
-    const [aggiorna, setAggiorna] = useState<boolean>(false)
+    // const [aggiorna, setAggiorna] = useState<boolean>(false)
 
     return (
         <>
