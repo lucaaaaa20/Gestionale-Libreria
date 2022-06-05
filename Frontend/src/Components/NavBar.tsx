@@ -6,7 +6,6 @@ import { faBook, faRectangleList, faRightFromBracket } from '@fortawesome/free-s
 import { logout } from '../actions/logout';
 import { useDispatch } from "react-redux";
 
-
 export const NavBar = () => {
     const dispatch = useDispatch();
     return (
@@ -15,7 +14,7 @@ export const NavBar = () => {
                 <Nav.Item as="li">
                     {/* LINK PERMETTE DI CREARE IL SEGMENTO CHE PERMETTE DI AVERE PAGINE DIVERSE */}
                     <Link to="/form" className="nav-link text-nav">
-                        <FontAwesomeIcon icon={faRectangleList}/> Inserimento
+                        <FontAwesomeIcon icon={faRectangleList} /> Inserimento
                     </Link>
                 </Nav.Item>
                 <Nav.Item as="li">
@@ -23,10 +22,10 @@ export const NavBar = () => {
                         <FontAwesomeIcon icon={faBook} /> Libreria
                     </Link>
                 </Nav.Item>
-                <Nav.Item as="li">
-                    <Nav.Link > <button className="btn btn-danger btn-block" onClick={() => dispatch(logout())}>Logout</button>
-                        <FontAwesomeIcon icon={faRightFromBracket} /> 
-                    </Nav.Link>
+                <Nav.Item as="li" className="ms-auto">
+                    <Link to="/" onClick={() => dispatch(logout())} className="nav-link text-btn">
+                        <FontAwesomeIcon icon={faRightFromBracket} />Logout
+                    </Link>
                 </Nav.Item>
             </Nav>
         </>
