@@ -74,6 +74,7 @@ body {
 
 .btn-card {
   background-color: rgba(119, 116, 215, 0);
+  border: unset;
 }
 
 .card-body>.btn-primary:hover {
@@ -87,6 +88,10 @@ body {
 
 .btn-delete {
   background-color: rgba(255, 255, 255, 0);
+}
+
+.btn-delete:focus{
+  background-color: red;
 }
 
 .btn-delete:hover {
@@ -145,10 +150,18 @@ button>svg {
   color: white
 }
 
+.text-nav:focus{
+  color: white;
+}
+
 .text-btn{
   color: #3b8ee5;
 }
 
 .text-btn:hover{
   color:red
+}
+
+.text-btn:focus{
+  color: red;
 }

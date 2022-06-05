@@ -6,7 +6,6 @@ import { login } from "../actions/login";
 
 export const LoginComponent = () => {
     const dispatch = useDispatch();
-
     const funzioneInserimento = (evt: any) => {
         evt.preventDefault();
         let email = evt.target.inputEmail.value;
@@ -16,7 +15,6 @@ export const LoginComponent = () => {
             email: email,
             password: passw
         }
-
         axios.post("http://localhost:4000/login", credenziali).then((risultato) => {
             if(risultato.data.status && risultato.data.status == "success"){
                 dispatch(login());
