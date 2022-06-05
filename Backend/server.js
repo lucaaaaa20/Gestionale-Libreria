@@ -23,6 +23,30 @@ app.listen(port, host, () => {
     console.log(`Sono connesso all'indirizzo http://${host}:${port}`)
 })
 
+
+
+
+app.post("/login", (req, res) => {
+    let email = req.body.email;
+    let passw = req.body.password;
+
+    connection.query(`SELECT * FROM amministratori WHERE eml = '${email}' AND pwd = '${passw}'`, (errore, risultato, campi)=>{
+
+        if(!errore && risultato.length == 1){
+            res.json({
+                status: "success",
+                data: risultato[0]
+            })
+        }
+        else
+            res.json({
+                status: "error",
+            
+            })
+    })
+})
+
+
 //--------------------- VISUALIZZA LISTA LIBRI ----------------------------------
 app.get("/libreria/lista", (req, res) => {
     connection.query("SELECT * FROM lista_libri", (errore, risultato, campi) => {
@@ -60,6 +84,7 @@ app.post("/libreria/addLibro", (req, res) => {
                 data: errore.sqlMessage
             })
     })
+
 })
 
 //--------------------- MODIFICA LIBRO TRAMITE ISBN -----------------------------
