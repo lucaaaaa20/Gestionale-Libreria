@@ -111,13 +111,13 @@ export const ListaLibri = () => {
                         <form onSubmit={preventDefault}>
                             <Card className="border border-dark p-2 hover" key={indice}>
                                 <Card.Title className="mt-3"><strong>Titolo</strong></Card.Title>
-                                <div className="card-body-text"> {elemento.titolo ? elemento.titolo : "Non definito"}</div>
+                                <div className="card-body-text text-dark"> {elemento.titolo ? elemento.titolo : "Non definito"}</div>
                                 {/* <hr className="hr"></hr> */}
                                 <Card.Title><strong>Autore</strong></Card.Title>
-                                <div className="card-body-text">{elemento.autore ? elemento.autore : "Non definito"}</div>
+                                <div className="card-body-text text-dark">{elemento.autore ? elemento.autore : "Non definito"}</div>
                                 {/* <hr className="hr"></hr> */}
                                 <Card.Title ><strong>Descrizione:</strong></Card.Title>
-                                <div className="mb-4 card-footer-text">{elemento.descrizione ? elemento.descrizione : "Non definito"}</div>
+                                <div className="mb-4 card-footer-text text-dark">{elemento.descrizione ? elemento.descrizione : "Non definito"}</div>
                                 <Card.Body>
                                     <button className="btn me-1 btn-card btn-delete" onClick={() => elimina(elemento.isbn)}><FontAwesomeIcon icon={faTrashCan} /></button>
                                     {/* ALLA CREAZIONE DELLE CARD PASSO L'ID DEL LIBRO APPENA LETTO ALLA FUNZIONE apriModale(isbn) */}
