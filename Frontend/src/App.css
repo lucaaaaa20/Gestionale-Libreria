@@ -90,7 +90,7 @@ body {
   background-color: rgba(255, 255, 255, 0);
 }
 
-.btn-delete:focus{
+.btn-delete:focus {
   background-color: red;
 }
 
@@ -150,18 +150,25 @@ button>svg {
   color: white
 }
 
-.text-nav:focus{
+.text-nav:focus {
   color: white;
 }
 
-.text-btn{
+.text-btn {
   color: #3b8ee5;
 }
 
-.text-btn:hover{
-  color:red
+.text-btn:hover {
+  color: red
 }
 
-.text-btn:focus{
+.text-btn:focus {
   color: red;
+}
+
+.filtro {
+  background-color: #3b8ee5;
+  box-shadow: 14px 14px 34px -5px #000;
+  border-radius: 15px;
+  padding: 15px
 }
