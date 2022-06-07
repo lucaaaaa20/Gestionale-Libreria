@@ -11,12 +11,14 @@ import { faTrashCan, faPencil, faFloppyDisk, faRotateLeft } from '@fortawesome/f
 export const ListaLibri = () => {
     const [libri, setLibri] = useState<Libro[]>()
     const [libro, setLibro] = useState<Libro>()
+    const [listafiltrata, setListaFiltrata] = useState<any>()
 
-    const[aggiorna, setAggiorna] = useState<boolean>(false)
-
+    const [aggiorna, setAggiorna] = useState<boolean>(false)
+    
     useEffect(() => {  //USE EFFECT FA SI CHE OGNI VOLTA CHE UNA CARD VENGA MODIFICATA O ELIMINATA VENGA AGGIORNATA LA LISTA
         axios.get<Libro[]>("http://localhost:4000/libreria/lista").then((Risultato) => { //PRENDO TUTTE LA LISTA DI LIBRI DAL DB
             setLibri(Risultato.data)        //VADO A SALVARE LA LISTA DI LIBRI NELLA VARIABILE LIBRI
+            setListaFiltrata(Risultato.data)
             console.log("stampa libri")
             setAggiorna(false)
         })
@@ -64,12 +66,20 @@ export const ListaLibri = () => {
         evt.preventDefault()
     }
 
+    const filtro = (titolo: string) => {
+        const lista: any = libri?.filter(book => (book.titolo.toLowerCase().includes(titolo.toLowerCase())))
+        console.log(lista)
+        setListaFiltrata(lista);
+    }
+
     return (
+        <>
+        <input type="text" onChange={event => { filtro(event.target.value) }} placeholder="Search book..."></input>
         <Row>
             {/* VADO A CREARE LE CARD IN BASE A QUANTI ELEMENTI CI SONO NELLA VARIABILE LIBRI (CHE E' STATA SETTATA ALL'APERTURA)*/}
-            {libri?.map((elemento: any, indice: any) =>
+            {listafiltrata?.map((elemento: any, indice: any) =>
                 <><Col className=" col-lg-4 col-md-6 col-sm-12 col-12 mb-3 col-index text-white">
-                    <form onSubmit={preventDefault}> 
+                    <form onSubmit={preventDefault}>
                         <Card className="border border-dark p-2 hover" key={indice}>
                             <Card.Title className="mt-3"><strong>Titolo</strong></Card.Title>
                             <div className="card-body-text"> {elemento.titolo ? elemento.titolo : "Non definito"}</div>
@@ -79,7 +89,7 @@ export const ListaLibri = () => {
                             {/* <hr className="hr"></hr> */}
                             <Card.Title ><strong>Descrizione:</strong></Card.Title>
                             <div className="mb-4 card-footer-text">{elemento.descrizione ? elemento.descrizione : "Non definito"}</div>
-                            <Card.Body> 
+                            <Card.Body>
                                 <button className="btn me-1 btn-card btn-delete" onClick={() => elimina(elemento.isbn)}><FontAwesomeIcon icon={faTrashCan} /></button>
                                 {/* ALLA CREAZIONE DELLE CARD PASSO L'ID DEL LIBRO APPENA LETTO ALLA FUNZIONE apriModale(isbn) */}
                                 <Button type="submit" variant="primary" onClick={() => apriModale(elemento.isbn)} className="btn-card"><FontAwesomeIcon icon={faPencil} /></Button>
@@ -121,5 +131,6 @@ export const ListaLibri = () => {
                 </Modal>
             </>
         </Row >
+        </>
     )
 }

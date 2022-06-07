@@ -29,11 +29,11 @@ export const LoginComponent = () => {
                 <form className="form-aggiunta p-4 mb-5" onSubmit={funzioneInserimento}>
                     <Form.Group>
                         <Form.Label className="mt-2">Email</Form.Label>
-                        <Form.Control type="text" id="inputEmail" placeholder="Inserisci il valore" />
+                        <Form.Control type="text" id="inputEmail" placeholder="Inserisci l'email" />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label className="mt-2">Password</Form.Label>
-                        <Form.Control type="password" id="inputPassword" placeholder="Inserisci il valore" />
+                        <Form.Control type="password" id="inputPassword" placeholder="Inserisci la password" />
                     </Form.Group>
                     <button type="submit" className="mt-4 btn btn-form mb-3 px-5 btn-block invio text-white">Inserisci</button>
                 </form>
