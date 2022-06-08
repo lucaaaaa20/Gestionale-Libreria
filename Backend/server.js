@@ -10,7 +10,7 @@ app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({ extended: true }))
 
 const port = 4000
-const host = "localhost"
+const host = "192.168.1.7"
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -30,9 +30,9 @@ app.post("/login", (req, res) => {
     let email = req.body.email;
     let passw = req.body.password;
 
-    connection.query(`SELECT * FROM amministratori WHERE eml = '${email}' AND pwd = '${passw}'`, (errore, risultato, campi)=>{
+    connection.query(`SELECT * FROM amministratori WHERE eml = '${email}' AND pwd = '${passw}'`, (errore, risultato, campi) => {
 
-        if(!errore && risultato.length == 1){
+        if (!errore && risultato.length == 1) {
             res.json({
                 status: "success",
                 data: risultato[0]
@@ -41,7 +41,7 @@ app.post("/login", (req, res) => {
         else
             res.json({
                 status: "error",
-            
+
             })
     })
 })
@@ -75,9 +75,11 @@ app.get("/libreria/libro/:isbn", (req, res) => {
 
 //------------------------------ AGGIUNTA LIBRO ---------------------------------
 app.post("/libreria/addLibro", (req, res) => {
+    console.log(req.body)
     connection.query(`INSERT INTO lista_libri (autore, titolo, descrizione) VALUES ("${req.body.autore}", "${req.body.titolo}", "${req.body.descrizione}" )`, (errore, risultato, campi) => {
-        if (!errore)
-            res.json("libro aggiunto con successo");
+        if (!errore) {
+            res.json("libro aggiunto con successo")
+        }
         else
             res.json({
                 status: "error",
