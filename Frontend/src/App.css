@@ -184,3 +184,7 @@ button>svg {
   border-radius: 15px;
   padding: 15px
 }
+
+.span{
+  display: inline-block;
+}

@@ -104,7 +104,7 @@ export const ListaLibri = () => {
                         <option value="autore">Autore</option>
                         <option value="nessuno">Nessuno</option>
                     </select>
-                    {filtroCard == "nessuno" ? "" : <input className="input-group" value={valoreInput} id="inputFiltro" type="text" onChange={event => { filtro(event.target.value) }} placeholder="Search book..."></input>}
+                    {filtroCard == "nessuno" ? <span className="span mb-4"></span> : <input className="input-group" value={valoreInput} id="inputFiltro" type="text" onChange={event => { filtro(event.target.value) }} placeholder="Search book..."></input>}
                 </Col>
             </Row>
             <Row>
