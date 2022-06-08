@@ -45,7 +45,7 @@ export const FormLibro = () => {
                         </Form.Group>
                         <Form.Group >
                             <Form.Label className="mt-2">Descrizione</Form.Label>
-                            <Form.Control type="text" id="inputDescrizione" placeholder="Inserisci la descrizione"></Form.Control>
+                            <Form.Control className="text-area" as="textarea" rows={6} type="text" id="inputDescrizione" placeholder="Inserisci la descrizione"></Form.Control>
                         </Form.Group>
                         <button type="submit" className=" mt-4 btn btn-form mb-3 px-5 btn-block invio text-white">Inserisci</button>
                     </form>

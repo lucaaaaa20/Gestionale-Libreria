@@ -179,7 +179,7 @@ button>svg {
 }
 
 .filtro {
-  background-color: #3b8ee5;
+  background: rgba(68, 78, 171, 0.493);
   box-shadow: 14px 14px 34px -5px #000;
   border-radius: 15px;
   padding: 15px
@@ -187,4 +187,9 @@ button>svg {
 
 .span{
   display: inline-block;
+  height: 8.5px;
+}
+
+.text-area{
+  resize: none;
 }

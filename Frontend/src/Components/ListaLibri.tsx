@@ -110,7 +110,7 @@ export const ListaLibri = () => {
                         <option value="autore">Autore</option>
                         <option value="nessuno">//</option>
                     </select>
-                    {filtroCard == "nessuno" ? <span className="span mb-4"></span> : <input className="input-group" value={valoreInput} id="inputFiltro" type="text" onChange={event => { filtro(event.target.value) }} placeholder="Cerca..."></input>}
+                    {filtroCard == "nessuno" ? <span className="span mb-4"></span> : <input className="input-group form-control" value={valoreInput} id="inputFiltro" type="text" onChange={event => { filtro(event.target.value) }} placeholder="Cerca..."></input>}
                 </Col>
             </Row>
             <Row>
