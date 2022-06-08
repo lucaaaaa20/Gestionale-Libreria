@@ -6,7 +6,7 @@ import { Button, Card, Col, Row, Modal, Form } from "react-bootstrap";
 import { Libro } from "../Interfaces/Libro";
 import { FormLibro } from "./FormLibro";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPencil, faFloppyDisk, faRotateLeft, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan, faPencil, faFloppyDisk, faRotateLeft, faFilter } from '@fortawesome/free-solid-svg-icons'
 
 export const ListaLibri = () => {
     const [libri, setLibri] = useState<Libro[]>()
@@ -95,8 +95,9 @@ export const ListaLibri = () => {
                 <Col className="col-4">
                 </Col>
                 <Col className="col-4 filtro mb-5">
-                    <label className="text-white fw-bold">
-                        <FontAwesomeIcon className="mb-2" icon={faMagnifyingGlass}/>
+                    <label className="text-white fw-bold mb-2">
+                        <FontAwesomeIcon icon={faFilter}/>
+                        <i className="my-auto ms-2">Filtra per...</i>
                     </label>
                     <select id="filtra" name="filtra" className="form-select mb-2" onChange={selezioneFiltro}>
                         <option value="titolo">Titolo</option>

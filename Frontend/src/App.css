@@ -162,8 +162,20 @@ button>svg {
   color: red
 }
 
+.margin-icon{
+  margin-top: 6px
+}
+
 .text-btn:focus {
   color: red;
+}
+
+.txt-btn-login:hover{
+  color: green
+}
+
+.txt-btn-login:focus{
+  color:green
 }
 
 .filtro {
