@@ -156,7 +156,7 @@ export const ListaLibri = () => {
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label className="mt-2">Descrizione</Form.Label>
-                                    <Form.Control type="text" id="descrizione" placeholder={libro?.descrizione ? libro.descrizione : "Non definito"}></Form.Control>
+                                    <Form.Control className="text-area" as="textarea" rows={6} type="text" id="descrizione" placeholder={libro?.descrizione ? libro.descrizione : "Non definito"}></Form.Control>
                                 </Form.Group>
                                 <Button className="me-2 mt-3 w-100" variant="secondary" onClick={handleClose}>
                                     <FontAwesomeIcon icon={faRotateLeft} />
