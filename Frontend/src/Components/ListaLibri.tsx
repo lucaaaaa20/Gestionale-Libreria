@@ -17,7 +17,7 @@ export const ListaLibri = () => {
     const [aggiorna, setAggiorna] = useState<boolean>(false)
 
     useEffect(() => {  //USE EFFECT FA SI CHE OGNI VOLTA CHE UNA CARD VENGA MODIFICATA O ELIMINATA VENGA AGGIORNATA LA LISTA
-        axios.get<Libro[]>("http://localhost:4000/libreria/lista").then((Risultato) => { //PRENDO TUTTE LA LISTA DI LIBRI DAL DB
+        axios.get<Libro[]>("http://192.168.1.7:4000/libreria/lista").then((Risultato) => { //PRENDO TUTTE LA LISTA DI LIBRI DAL DB
             setLibri(Risultato.data)        //VADO A SALVARE LA LISTA DI LIBRI NELLA VARIABILE LIBRI
             setListaFiltrata(Risultato.data)
             console.log("stampa libri")
@@ -26,7 +26,7 @@ export const ListaLibri = () => {
     }, [aggiorna]) //ALLA MODIFICA DI AGGIORNA VIENE ESEGUITO L'useEffect
 
     const elimina = (id: number): void => {
-        axios.delete(`http://localhost:4000/libreria/elimina/${id}`).then((Risultato) => {
+        axios.delete(`http://192.168.1.7:4000/libreria/elimina/${id}`).then((Risultato) => {
             console.log("eliminato")
             setAggiorna(true) //MODIFICA VIENE SETTATO A TRUE
         })
@@ -50,7 +50,7 @@ export const ListaLibri = () => {
         }
         let id = libro?.isbn    //PRENDO L'ID DEL LIBRO IN BASE ALLA CARD APPENA CLICCATA
         //INSERISCO IL LIBRO CREATO DAL FORM DELLA MODALE COME BODY DEL MESSAGGIO, COSI' POSSO ANDARE AD AGGIORNARE IL LIBRO
-        axios.put<any>(`http://localhost:4000/libreria/modifica/${id}`, libroModificato).then((Risultato) => {
+        axios.put<any>(`http://192.168.1.7:4000/libreria/modifica/${id}`, libroModificato).then((Risultato) => {
             console.log(Risultato)
             setAggiorna(true)
         })
@@ -62,7 +62,7 @@ export const ListaLibri = () => {
         setShow(true);
 
     const apriModale = (isbn: any) => {
-        axios.get<any>(`http://localhost:4000/libreria/libro/${isbn}`).then((risultato) => {
+        axios.get<any>(`http://192.168.1.7:4000/libreria/libro/${isbn}`).then((risultato) => {
             console.log(risultato.data)
             setLibro(risultato.data[0])     //AL CLICK DELL'APERTURA DELLA MODALE VADO A SETTARE LA VARIABILE LIBRO ALLA CARD APPENA CLICCATO
         })                                  //QUESTO PERMETTERA' ANCHE DI MOSTRARE NEI PLACEHOLDER DELL'INPUT DELLA MODALE IL VALORE DEL LIBRO APPENA CLICCATO

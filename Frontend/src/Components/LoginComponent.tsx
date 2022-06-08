@@ -15,7 +15,7 @@ export const LoginComponent = () => {
             email: email,
             password: passw
         }
-        axios.post("http://localhost:4000/login", credenziali).then((risultato) => {
+        axios.post("http://192.168.1.7:4000/login", credenziali).then((risultato) => {
             if(risultato.data.status && risultato.data.status == "success"){
                 dispatch(login());
             }

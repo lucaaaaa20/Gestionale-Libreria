@@ -20,7 +20,7 @@ export const FormLibro = () => {
             descrizione: descrizione
         }
         //VADO A INSERIRE I VALORI INSERITI NEL FORM NEL DB
-        axios.post<Libro>("http://localhost:4000/libreria/addLibro", libro).then((risultato) => { console.log(risultato) })
+        axios.post<Libro>("http://192.168.1.7:4000/libreria/addLibro", libro).then((risultato) => { console.log(risultato) })
         // setAggiorna(true)
         evt.target.inputAutore.value = ""
         evt.target.inputTitolo.value = ""
