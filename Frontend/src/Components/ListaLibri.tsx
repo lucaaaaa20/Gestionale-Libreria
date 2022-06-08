@@ -34,8 +34,14 @@ export const ListaLibri = () => {
 
     const modifica = (event: any) => { //AL CLICK DEL TASTO MODIFICA NELLA MODALE
         event.preventDefault()         //PRENDO TUTTI I VALORI DEL FORM GRAZIE A EVENT.TARGET CHE RESTITUISCE TUTTO IL FORM HTML
-        let autoreMod = event.target.autore.value //L'ID PERMETTE DI PRENDERE I VALORI
+        if (event.target.autore.value.trim() == "")
+            event.target.autore.value = libro?.autore
+        let autoreMod = event.target.autore.value
+        if (event.target.titolo.value.trim() == "")
+            event.target.titolo.value = libro?.titolo //L'ID PERMETTE DI PRENDERE I VALORI
         let titoloMod = event.target.titolo.value
+        if (event.target.descrizione.value.trim() == "")
+            event.target.descrizione.value = libro?.descrizione //L'ID PERMETTE DI PRENDERE I VALORI
         let descrizioneMod = event.target.descrizione.value
         let libroModificato = { //LIBRO DEL FORM NELLA MODALE
             autore: autoreMod,
@@ -96,15 +102,15 @@ export const ListaLibri = () => {
                 </Col>
                 <Col className="col-4 filtro mb-5">
                     <label className="text-white fw-bold mb-2">
-                        <FontAwesomeIcon icon={faFilter}/>
+                        <FontAwesomeIcon icon={faFilter} />
                         <i className="my-auto ms-2">Filtra per...</i>
                     </label>
                     <select id="filtra" name="filtra" className="form-select mb-2" onChange={selezioneFiltro}>
                         <option value="titolo">Titolo</option>
                         <option value="autore">Autore</option>
-                        <option value="nessuno">Nessuno</option>
+                        <option value="nessuno">//</option>
                     </select>
-                    {filtroCard == "nessuno" ? <span className="span mb-4"></span> : <input className="input-group" value={valoreInput} id="inputFiltro" type="text" onChange={event => { filtro(event.target.value) }} placeholder="Search book..."></input>}
+                    {filtroCard == "nessuno" ? <span className="span mb-4"></span> : <input className="input-group" value={valoreInput} id="inputFiltro" type="text" onChange={event => { filtro(event.target.value) }} placeholder="Cerca..."></input>}
                 </Col>
             </Row>
             <Row>
